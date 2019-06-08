@@ -2,22 +2,28 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { useAppleID } from "./lib";
+
 const App: React.FC = () => {
+  const { signIn } = useAppleID({
+    clientId: "xxx",
+    redirectURI: "xxx",
+    scope: "xxx",
+    state: "xxx",
+  });
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Try clicking the button below
         </p>
-        <a
+        <button
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={() => signIn()}
         >
-          Learn React
-        </a>
+          Sign in with Apple
+        </button>
       </header>
     </div>
   );
